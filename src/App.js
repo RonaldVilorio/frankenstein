@@ -1,14 +1,20 @@
-import { gsap } from 'gsap/all';
+import { gsap,Draggable} from 'gsap/all';
 import './App.css';
 import {useRef, useEffect} from "react"
 function App() {
-  const boxRef = useRef();
+  // const boxRef = useRef();
+  // const circleRef = useRef();
+  // Draggable.create(".circle")
+  gsap.registerPlugin(Draggable);
   useEffect(() => {
-    gsap.to(boxRef.current, { rotation: 360 });
+    Draggable.create(".circle",{
+      bounds:".container"
+    })
   });
   return (
     <div className="App">
-        <div className="box"ref={boxRef}>Hello</div>
+        <div className="container"></div>
+        <div className="circle">Hello</div>
     </div>
   );
 }
